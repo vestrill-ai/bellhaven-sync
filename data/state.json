@@ -1729,10 +1729,31 @@
         }
       ],
       "key": "49f4bd0e54e56185",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
       "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "history": [
+        {
+          "at": "2026-11-22T23:44:32.970Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: created account 0017023BE58158151E \"Bellhaven of Marietta\"",
+            "step 2: updated 001A34WFSUYHCRBLFT {\"chow_current_account\":\"0017023BE58158151E\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {
+          "new": "0017023BE58158151E"
+        },
+        "done": [
+          0,
+          1
+        ]
+      },
+      "applied_at": "2026-11-22T23:44:34.254Z"
     },
     "e79a8228f22c1b18": {
       "type": "MARK_DUPLICATE",

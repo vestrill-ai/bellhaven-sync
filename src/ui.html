@@ -104,7 +104,7 @@ const FIELDS = {
 };
 const ID_FIELDS = new Set(['parent_id', 'duplicate_of_account', 'chow_current_account']);
 const TABS = { pending: 'To review', failed: 'Failed', approved: 'Approved', rejected: 'Rejected', obsolete: 'Obsolete', confirmed: 'Already correct' };
-const EVENTS = { 'approved+applied': 'Approved and written to CRM', rejected: 'Rejected', apply_failed: 'Write failed', obsolete: 'No longer proposed' };
+const EVENTS = { 'approved+applied': 'Approved and written to CRM', rejected: 'Rejected', apply_failed: 'Write failed', obsolete: 'No longer proposed', reopened: 'Reopened for review' };
 
 let state = { proposals: [], runs: [], matched: [], names: {}, crmBrowser: '' };
 let tab = 'pending';
@@ -224,7 +224,8 @@ function card(p) {
         <h2 style="margin-top:4px">${esc(p.title)}</h2>
         <div class="summary">${rich(p.summary)}</div>
       </div>
-      ${decided ? `<span class="badge">${TABS[p.status]}</span>` : `<div class="actions">
+      ${decided ? `<div class="actions"><span class="badge">${TABS[p.status]}</span>${p.status === 'rejected'
+        ? `<button data-act="reopen" data-key="${p.key}" title="Move back to To review">Reopen</button>` : ''}</div>` : `<div class="actions">
         <button class="approve" data-act="approve" data-key="${p.key}">${p.status === 'failed' ? 'Retry' : 'Approve'}</button>
         <button class="reject" data-act="reject" data-key="${p.key}">Reject</button></div>`}
     </div>
@@ -249,7 +250,8 @@ async function act(key, action) {
   const comment = (document.getElementById('c-' + key) || {}).value || '';
   const r = await fetch(`/api/proposals/${key}/${action}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ comment }) });
   const j = await r.json();
-  toast(r.ok ? `${action === 'approve' ? 'Approved and written to CRM' : 'Rejected'}${j.log ? ': ' + j.log.join(' | ') : ''}` : 'Error: ' + j.error, r.ok ? 4000 : 9000);
+  const done = { approve: 'Approved and written to CRM', reject: 'Rejected', reopen: 'Reopened: moved back to To review' }[action];
+  toast(r.ok ? `${done}${j.log ? ': ' + j.log.join(' | ') : ''}` : 'Error: ' + j.error, r.ok ? 4000 : 9000);
   open.delete(key);
   await load();
 }

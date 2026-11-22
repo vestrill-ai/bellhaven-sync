@@ -8,7 +8,7 @@ Zero dependencies: Node 18+ only.
 
 ```bash
 cp .env.example .env          # add CRM_TOKEN
-npm test                      # 11 tests against a real snapshot of the CRM + website
+npm test                      # 12 tests against a real snapshot of the CRM + website
 npm run pipeline              # scrape + match -> data/state.json (never writes to the CRM)
 npm run review                # http://localhost:3000  -> approve / reject
 ```
@@ -88,6 +88,7 @@ the CRM straight away; reject records who and why. Account ids link to the CRM b
 ### 5. Safe to re-run
 * Every proposal has a deterministic key: `sha1(type, community, operations)`. Notes and dates are left out of the key, so tomorrow's run produces the same key.
 * Approved and rejected keys are never queued again. Pending items the latest run no longer produces become `obsolete`.
+* A reviewer can **reopen** a rejected item if they change their mind (logged in its history). Approved items can't be reopened: they are already in the CRM.
 * After approvals, the CRM itself matches the website, so a re-run produces nothing for those items anyway (tested: after approving everything, all 35 communities come back as *confirmed* and 0 new proposals).
 * **Precondition check:** before every PATCH the app re-reads the account. If a field it's about to change no longer has the value the reviewer saw, it stops and asks for a re-run instead of overwriting someone's edit.
 * **Resumable:** a CHOW is two writes (create + patch). Progress is saved after each step, so retrying after a failure never creates a second account.

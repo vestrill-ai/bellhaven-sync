@@ -189,3 +189,37 @@ test('scraper crawl: survives a looping pager and finds homepage-only communitie
     assert.equal(locs.find((l) => l.slug === 'hidden-one').in_directory, false);
   } finally { global.fetch = orig; }
 });
+
+test('review app: a rejected item can be reopened, an approved one cannot', async () => {
+  const { spawn } = require('child_process');
+  const d = load();
+  const file = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'bh-')), 'state.json');
+  const s = store.load(file);
+  store.merge(s, match({ ...d, today }).proposals);
+  const [rej, appr] = Object.values(s.proposals);
+  rej.status = 'rejected';
+  appr.status = 'approved';
+  store.save(s, file);
+
+  const port = 3900 + Math.floor(Math.random() * 90);
+  const srv = spawn(process.execPath, [path.join(__dirname, '..', 'src', 'server.js')],
+    { env: { ...process.env, STATE_FILE: file, PORT: String(port), CRM_TOKEN: '' }, stdio: ['ignore', 'pipe', 'inherit'] });
+  try {
+    await new Promise((ok) => srv.stdout.once('data', ok)); // "Review app: http://localhost:..."
+    const post = (key, action) => fetch(`http://localhost:${port}/api/proposals/${key}/${action}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reviewer: 'test' }) });
+
+    assert.equal((await post(rej.key, 'reopen')).status, 200);
+    assert.equal((await post(appr.key, 'reopen')).status, 409, 'approved items are already in the CRM');
+    assert.equal((await post(rej.key, 'reopen')).status, 409, 'already pending again');
+
+    const after = store.load(file);
+    assert.equal(after.proposals[rej.key].status, 'pending');
+    assert.equal(after.proposals[rej.key].history.at(-1).event, 'reopened');
+    // The next run treats it like any other pending item (refreshed, not skipped).
+    const counts = store.merge(after, match({ ...d, today }).proposals);
+    assert.equal(counts.skipped_decided, 1, 'only the approved item is skipped');
+  } finally {
+    srv.kill();
+  }
+});

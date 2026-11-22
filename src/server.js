@@ -52,7 +52,7 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
-    const m = url.pathname.match(/^\/api\/proposals\/([a-f0-9]+)\/(approve|reject)$/);
+    const m = url.pathname.match(/^\/api\/proposals\/([a-f0-9]+)\/(approve|reject|reopen)$/);
     if (req.method === 'POST' && m) {
       const [, key, action] = m;
       const body = await readBody(req);
@@ -61,8 +61,17 @@ const server = http.createServer(async (req, res) => {
         const s = store.load();
         const p = s.proposals[key];
         if (!p) return send(res, 404, { error: 'Unknown proposal' });
-        if (store.DECIDED.has(p.status)) return send(res, 409, { error: `Already ${p.status}` });
         const at = new Date().toISOString();
+        if (action === 'reopen') {
+          // A reviewer can change their mind about a REJECTION. Approved items can't be reopened:
+          // they are already written to the CRM, and the next run proposes whatever is still needed.
+          if (p.status !== 'rejected') return send(res, 409, { error: `Only rejected items can be reopened (this one is ${p.status})` });
+          p.status = 'pending';
+          p.history.push({ at, event: 'reopened', by: reviewer, comment: body.comment || '' });
+          store.save(s);
+          return send(res, 200, { ok: true, status: p.status });
+        }
+        if (store.DECIDED.has(p.status)) return send(res, 409, { error: `Already ${p.status}` });
         if (action === 'reject') {
           p.status = 'rejected';
           p.history.push({ at, event: 'rejected', by: reviewer, comment: body.comment || '' });
