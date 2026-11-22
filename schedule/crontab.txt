@@ -1,0 +1,4 @@
+# Alternative to the GitHub Actions workflow: run on any always-on box.
+# 6:15 AM Central every day. flock prevents overlapping runs; output is appended to a log.
+CRON_TZ=America/Chicago
+15 6 * * * cd /opt/bellhaven-sync && /usr/bin/flock -n /tmp/bellhaven-sync.lock /usr/bin/node src/pipeline.js >> logs/pipeline.log 2>&1

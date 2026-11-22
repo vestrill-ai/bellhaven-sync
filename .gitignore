@@ -1,0 +1,6 @@
+.env
+node_modules/
+data/snapshots/
+*.tmp
+logs/
+.claude/

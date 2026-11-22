@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bellhaven CRM Sync · Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --ink:#1d2321; --muted:#68716d; --line:#e3e6e4; --bg:#f6f7f6; --card:#fff; --green:#1f6b55; --red:#b23b3b; --amber:#a86b00; --blue:#2c5c9a; }
+  * { box-sizing: border-box; }
+  body { margin:0; font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  header { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line); padding:12px 24px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:17px; margin:0; font-weight:600; }
+  header .meta { color:var(--muted); font-size:12px; }
+  header .spacer { flex:1; }
+  button { font:inherit; border:1px solid var(--line); background:#fff; border-radius:6px; padding:6px 12px; cursor:pointer; }
+  button:hover { border-color:#c5cbc8; }
+  button.approve { background:var(--green); color:#fff; border-color:var(--green); }
+  button.reject { color:var(--red); border-color:#e7c3c3; }
+  button.link { border:none; background:none; color:var(--blue); padding:4px 6px; }
+  button:disabled { opacity:.5; cursor:wait; }
+  a { color:var(--blue); }
+  nav.tabs { display:flex; gap:4px; padding:12px 24px 0; flex-wrap:wrap; }
+  nav.tabs button { border-radius:999px; }
+  nav.tabs button.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .strip { display:flex; gap:8px; padding:12px 24px 0; flex-wrap:wrap; align-items:center; max-width:1200px; }
+  .chip { display:flex; flex-direction:column; align-items:flex-start; gap:2px; min-width:120px; padding:8px 12px; border-radius:8px; }
+  .chip b { font-size:20px; line-height:1; }
+  .chip span { font-size:12px; }
+  .chip.on { outline:2px solid var(--ink); outline-offset:-2px; }
+  .strip .tools { margin-left:auto; }
+  main { padding:4px 24px 80px; max-width:1200px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; margin:10px 0; }
+  .head { display:flex; gap:10px; align-items:center; padding:12px 16px; cursor:pointer; flex-wrap:wrap; }
+  .head .caret { color:var(--muted); width:12px; transition:transform .15s; }
+  .card.open .head .caret { transform:rotate(90deg); }
+  .head .titles { flex:1; min-width:260px; }
+  .head h2 { font-size:15px; margin:0; font-weight:600; }
+  .head .summary { color:var(--muted); font-size:13px; margin-top:2px; }
+  .head .actions { display:flex; gap:6px; }
+  .body { display:none; padding:0 16px 16px; border-top:1px solid var(--line); }
+  .card.open .body { display:block; }
+  .row { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:600; letter-spacing:.02em; padding:2px 8px; border-radius:999px; background:#eef1ef; color:var(--muted); white-space:nowrap; }
+  .t-CHOW_NEW_ACCOUNT,.t-CHOW_EXISTING { background:#fdf0d8; color:var(--amber); }
+  .t-REPARENT { background:#e4eefb; color:var(--blue); }
+  .t-MARK_DUPLICATE { background:#f4e6f6; color:#7b3a87; }
+  .t-CREATE_ACCOUNT { background:#e2f3ea; color:var(--green); }
+  .t-UPDATE_FIELDS { background:#eef1ef; color:var(--ink); }
+  .t-NOT_ON_WEBSITE { background:#fbe7e7; color:var(--red); }
+  .c-high { background:#e2f3ea; color:var(--green); } .c-medium { background:#fdf0d8; color:var(--amber); }
+  details { margin-top:12px; } summary { cursor:pointer; color:var(--muted); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+  h4 { margin:14px 0 4px; font-size:13px; }
+  ul.reasons { margin:4px 0; padding-left:18px; } ul.reasons li { margin:2px 0; }
+  table { border-collapse:collapse; width:100%; margin:6px 0; font-size:13px; }
+  th, td { text-align:left; padding:5px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:600; }
+  td.step { background:#fafbfa; font-weight:600; }
+  .api { display:block; font:11px ui-monospace, Consolas, monospace; color:#9aa29e; }
+  .id { font:12px ui-monospace, Consolas, monospace; }
+  .old { color:var(--red); text-decoration:line-through; } .new { color:var(--green); font-weight:600; }
+  .grid { display:grid; grid-template-columns: 280px 1fr; gap:16px; margin-top:12px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background:#fafbfa; border:1px solid var(--line); border-radius:8px; padding:10px 12px; }
+  .panel h3 { margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .comment { margin-top:12px; } .comment input { width:100%; max-width:520px; padding:6px 10px; border:1px solid var(--line); border-radius:6px; font:inherit; }
+  .history { font-size:12px; color:var(--muted); margin-top:8px; white-space:pre-wrap; }
+  .role-survivor td:first-child::before { content:"★ "; color:var(--green); }
+  .money { font-variant-numeric: tabular-nums; }
+  .warn { color:var(--amber); font-weight:600; }
+  .empty { padding:16px; color:var(--muted); }
+  #toast { position:fixed; bottom:16px; right:16px; background:var(--ink); color:#fff; padding:10px 14px; border-radius:8px; display:none; max-width:520px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Bellhaven → CRM sync · review queue</h1>
+  <span class="meta" id="lastrun"></span>
+  <span class="spacer"></span>
+  <a id="crmlink" target="_blank" rel="noopener">Open CRM browser ↗</a>
+  <button id="runbtn">Run pipeline now</button>
+</header>
+<nav class="tabs" id="tabs"></nav>
+<div class="strip" id="strip"></div>
+<main id="list"></main>
+<div id="toast"></div>
+<script>
+// Proposal types, in the order they are reviewed, with reviewer-friendly names.
+const TYPES = {
+  CHOW_NEW_ACCOUNT: 'Ownership change · new account',
+  CHOW_EXISTING:    'Ownership change · existing account',
+  REPARENT:         'Move to Bellhaven',
+  MARK_DUPLICATE:   'Duplicate',
+  CREATE_ACCOUNT:   'New account',
+  UPDATE_FIELDS:    'Update details',
+  NOT_ON_WEBSITE:   'Missing from website',
+};
+const TYPE_ORDER = Object.keys(TYPES);
+// CRM API field -> label shown to the reviewer (the API name is still shown in small grey text).
+const FIELDS = {
+  name: 'Account name', parent_id: 'Parent company', billing_street: 'Street', billing_city: 'City',
+  billing_state: 'State', billing_zip: 'ZIP', care_type: 'Care type', phone: 'Phone', status: 'Status',
+  note: 'Note (added)', duplicate_of_account: 'Duplicate of', chow_current_account: 'New owner\'s account (CHOW link)',
+  lifetime_revenue: 'Lifetime revenue', outstanding_ar: 'Outstanding AR',
+};
+const ID_FIELDS = new Set(['parent_id', 'duplicate_of_account', 'chow_current_account']);
+const TABS = { pending: 'To review', failed: 'Failed', approved: 'Approved', rejected: 'Rejected', obsolete: 'Obsolete', confirmed: 'Already correct' };
+const EVENTS = { 'approved+applied': 'Approved and written to CRM', rejected: 'Rejected', apply_failed: 'Write failed', obsolete: 'No longer proposed' };
+
+let state = { proposals: [], runs: [], matched: [], names: {}, crmBrowser: '' };
+let tab = 'pending';
+let typeFilter = null;
+const open = new Set();
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = (n) => '$' + Number(n || 0).toLocaleString('en-US');
+const idLink = (id) => state.crmBrowser ? `<a class="id" target="_blank" rel="noopener" href="${state.crmBrowser}/${esc(id)}">${esc(id)}</a>` : `<span class="id">${esc(id)}</span>`;
+// An account shown as its name with the id underneath as a link.
+const acct = (id) => id ? `${state.names[id] ? esc(state.names[id]) + ' ' : ''}${idLink(id)}` : '';
+// Escape text and turn any "[ACCOUNTID]" into the account's name + link.
+// (If the text already quotes the name right before the id, that quote is replaced rather than repeated.)
+const rich = (t) => esc(t).replace(/(&quot;[^&]*&quot; )?\[([0-9A-Z]{15,18})\]/g, (_, quoted, id) =>
+  state.names[id] ? `"${esc(state.names[id])}" (${idLink(id)})` : `${quoted || ''}${idLink(id)}`);
+const fieldLabel = (k) => `${esc(FIELDS[k] || k)}<span class="api">${esc(k)}</span>`;
+
+function toast(msg, ms = 4000) { const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = 'none', ms); }
+
+async function load() {
+  state = await (await fetch('/api/state')).json();
+  state.names = state.names || {};
+  const r = state.runs[0];
+  document.getElementById('lastrun').textContent = r ? `Last run ${new Date(r.at).toLocaleString()} · ${r.locations} communities on the website · ${r.accounts} CRM accounts` : 'No runs yet — click "Run pipeline now"';
+  const cl = document.getElementById('crmlink'); cl.href = state.crmBrowser || '#'; cl.style.display = state.crmBrowser ? '' : 'none';
+  render();
+}
+
+function counts() {
+  const c = Object.fromEntries(Object.keys(TABS).map((t) => [t, 0]));
+  for (const p of state.proposals) c[p.status] = (c[p.status] || 0) + 1;
+  c.confirmed = state.matched.filter((m) => m.outcome === 'CONFIRMED').length;
+  return c;
+}
+
+function render() {
+  const c = counts();
+  document.getElementById('tabs').innerHTML = Object.entries(TABS).map(([t, label]) => `<button class="${t === tab ? 'on' : ''}" data-tab="${t}">${label} (${c[t] || 0})</button>`).join('');
+  const list = document.getElementById('list');
+  const strip = document.getElementById('strip');
+  if (tab === 'confirmed') {
+    strip.innerHTML = '';
+    const rows = state.matched.filter((m) => m.outcome === 'CONFIRMED');
+    list.innerHTML = `<div class="card" style="padding:12px 16px"><h4 style="margin-top:0">Matched to the website with nothing to change</h4><table><tr><th>Website community</th><th>CRM account</th></tr>${rows.map((m) => `<tr><td>${esc(m.name)}</td><td>${acct(m.account_id)}</td></tr>`).join('')}</table></div>`;
+    return;
+  }
+  const inTab = state.proposals.filter((p) => p.status === tab);
+  const byType = {}; for (const p of inTab) byType[p.type] = (byType[p.type] || 0) + 1;
+  if (typeFilter && !byType[typeFilter]) typeFilter = null;
+  strip.innerHTML = inTab.length ? TYPE_ORDER.filter((t) => byType[t]).map((t) =>
+      `<button class="chip t-${t} ${typeFilter === t ? 'on' : ''}" data-type="${t}"><b>${byType[t]}</b><span>${TYPES[t]}</span></button>`).join('') +
+    `<span class="tools">${typeFilter ? '<button class="link" data-type="">Show all</button>' : ''}<button class="link" data-expand="1">Expand all</button><button class="link" data-expand="0">Collapse all</button></span>` : '';
+  const items = inTab.filter((p) => !typeFilter || p.type === typeFilter)
+    .sort((a, b) => TYPE_ORDER.indexOf(a.type) - TYPE_ORDER.indexOf(b.type) || a.title.localeCompare(b.title));
+  list.innerHTML = items.length ? items.map(card).join('') : `<div class="card empty">Nothing here.</div>`;
+}
+
+function value(k, v) {
+  if (v === '$new') return '<i>the new account from step 1</i>';
+  if (ID_FIELDS.has(k) && v) return acct(v);
+  return esc(v);
+}
+
+function changesTable(p) {
+  const crmById = Object.fromEntries((p.evidence.crm || []).map((a) => [a.account_id, a]));
+  const rows = [];
+  const multi = p.ops.length > 1;
+  p.ops.forEach((op, i) => {
+    const step = multi ? `Step ${i + 1}: ` : '';
+    if (op.op === 'create') {
+      const created = p.progress && p.progress.refs && p.progress.refs[op.ref];
+      rows.push(`<tr><td colspan="3" class="step">${step}Create a new account ${created ? '→ created ' + acct(created) : ''}</td></tr>`);
+      for (const [k, v] of Object.entries(op.fields)) rows.push(`<tr><td>${fieldLabel(k)}</td><td></td><td class="new">${value(k, v)}</td></tr>`);
+    } else {
+      const cur = crmById[op.account_id] || {};
+      rows.push(`<tr><td colspan="3" class="step">${step}Update ${acct(op.account_id)}</td></tr>`);
+      for (const [k, v] of Object.entries(op.fields)) {
+        const before = k === 'note' ? (cur.note || '') : (op.expect && k in op.expect ? op.expect[k] : cur[k]);
+        const after = k === 'note' && before ? String(v).slice(String(before).length).trim() : v;
+        rows.push(`<tr><td>${fieldLabel(k)}</td><td class="old">${k === 'note' ? '' : value(k, before)}</td><td class="new">${value(k, after)}</td></tr>`);
+      }
+    }
+  });
+  return `<table><tr><th style="width:200px">Field</th><th>Current</th><th>Proposed</th></tr>${rows.join('')}</table>`;
+}
+
+function websitePanel(w) {
+  if (!w) return `<div class="panel"><h3>Website</h3><i>Not found on the Bellhaven website.</i></div>`;
+  return `<div class="panel"><h3>Website</h3>
+    <b>${esc(w.name)}</b><br>${esc(w.street)}<br>${esc(w.city)}, ${esc(w.state)} ${esc(w.zip)}<br>
+    Care: ${esc(w.care_offerings.join(', '))}<br>Administrator: ${esc(w.administrator)}<br>Phone: ${esc(w.phone)}<br>
+    <a href="${esc(w.url)}" target="_blank" rel="noopener">View page ↗</a>${w.in_directory === false ? '<br><span class="warn">Not in the website directory (homepage link only)</span>' : ''}</div>`;
+}
+
+function crmPanel(list, title) {
+  if (!list || !list.length) return '';
+  const role = { survivor: 'kept (survivor)', duplicate: 'duplicate copy' };
+  return `<div class="panel" style="margin-top:8px"><h3>${title}</h3><table>
+    <tr><th>Account</th><th>Parent company</th><th>Address</th><th>Care type</th><th>Status</th><th>Revenue / AR</th><th>Contacts</th></tr>
+    ${list.map((a) => `<tr class="role-${esc(a.role || '')}"><td><b>${esc(a.name)}</b><br>${idLink(a.account_id)}${a.role ? `<br><i>${esc(role[a.role] || a.role)}</i>` : ''}${a.why_not ? `<br><i>Not matched: ${esc(a.why_not.join('; '))}</i>` : ''}</td>
+      <td>${esc(a.parent_name || '—')}</td><td>${esc(a.billing_street)}<br>${esc(a.billing_city)}, ${esc(a.billing_state)} ${esc(a.billing_zip)}</td>
+      <td>${esc(a.care_type)}</td><td>${esc(a.status)}</td>
+      <td class="money">${money(a.lifetime_revenue)} / <span class="${Number(a.outstanding_ar) > 0 ? 'warn' : ''}">${money(a.outstanding_ar)}</span></td>
+      <td>${(a.contacts || []).map((c) => esc(c.name) + ' <i>(' + esc(c.title) + ')</i>').join('<br>')}</td></tr>`).join('')}
+  </table></div>`;
+}
+
+function card(p) {
+  const decided = p.status === 'approved' || p.status === 'rejected';
+  const hist = (p.history || []).map((h) => `${new Date(h.at).toLocaleString()} · ${EVENTS[h.event] || h.event}${h.by ? ' by ' + h.by : ''}${h.comment ? ' — ' + h.comment : ''}${h.error ? ' — ' + h.error : ''}${h.log ? '\n   ' + h.log.join('\n   ') : ''}`).join('\n');
+  const nearMisses = p.evidence.near_misses && p.evidence.near_misses.length;
+  return `<div class="card ${open.has(p.key) ? 'open' : ''}" id="p-${p.key}">
+    <div class="head" data-toggle="${p.key}">
+      <span class="caret">▶</span>
+      <div class="titles">
+        <div class="row"><span class="badge t-${p.type}">${TYPES[p.type] || p.type}</span><span class="badge c-${p.confidence}">${p.confidence} confidence</span></div>
+        <h2 style="margin-top:4px">${esc(p.title)}</h2>
+        <div class="summary">${rich(p.summary)}</div>
+      </div>
+      ${decided ? `<span class="badge">${TABS[p.status]}</span>` : `<div class="actions">
+        <button class="approve" data-act="approve" data-key="${p.key}">${p.status === 'failed' ? 'Retry' : 'Approve'}</button>
+        <button class="reject" data-act="reject" data-key="${p.key}">Reject</button></div>`}
+    </div>
+    <div class="body">
+      <div class="grid">
+        <div>${websitePanel(p.evidence.website)}</div>
+        <div>
+          <h4>Why</h4><ul class="reasons">${p.reasons.map((r) => `<li>${rich(r)}</li>`).join('')}</ul>
+          <h4>What will change in the CRM</h4>${changesTable(p)}
+        </div>
+      </div>
+      <details ${p.type === 'CREATE_ACCOUNT' && nearMisses ? 'open' : ''}><summary>CRM records${nearMisses ? ' and similar accounts that were ruled out' : ''}</summary>
+        ${crmPanel(p.evidence.crm, 'Matched CRM accounts')}${crmPanel(p.evidence.near_misses, 'Similar accounts considered and ruled out')}</details>
+      ${decided ? '' : `<div class="comment"><input placeholder="Optional comment (saved with your decision)" id="c-${p.key}"></div>`}
+      ${hist ? `<div class="history">${esc(hist)}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+async function act(key, action) {
+  const btns = document.querySelectorAll(`#p-${key} button`); btns.forEach((b) => b.disabled = true);
+  const comment = (document.getElementById('c-' + key) || {}).value || '';
+  const r = await fetch(`/api/proposals/${key}/${action}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ comment }) });
+  const j = await r.json();
+  toast(r.ok ? `${action === 'approve' ? 'Approved and written to CRM' : 'Rejected'}${j.log ? ': ' + j.log.join(' | ') : ''}` : 'Error: ' + j.error, r.ok ? 4000 : 9000);
+  open.delete(key);
+  await load();
+}
+
+document.getElementById('tabs').addEventListener('click', (e) => { if (e.target.dataset.tab) { tab = e.target.dataset.tab; typeFilter = null; render(); } });
+document.getElementById('strip').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if ('type' in b.dataset) { typeFilter = b.dataset.type && b.dataset.type !== typeFilter ? b.dataset.type : null; render(); }
+  if ('expand' in b.dataset) {
+    document.querySelectorAll('#list .card[id^="p-"]').forEach((el) => { const k = el.id.slice(2); b.dataset.expand === '1' ? open.add(k) : open.delete(k); });
+    render();
+  }
+});
+document.getElementById('list').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-act]');
+  if (btn) { e.stopPropagation(); return act(btn.dataset.key, btn.dataset.act); }
+  const head = e.target.closest('.head');
+  if (head && !e.target.closest('a')) {
+    const k = head.dataset.toggle; open.has(k) ? open.delete(k) : open.add(k);
+    document.getElementById('p-' + k).classList.toggle('open');
+  }
+});
+document.getElementById('runbtn').addEventListener('click', async (e) => {
+  e.target.disabled = true; e.target.textContent = 'Running…';
+  const r = await fetch('/api/run', { method: 'POST' }); const j = await r.json();
+  e.target.disabled = false; e.target.textContent = 'Run pipeline now';
+  toast(r.ok ? j.log.slice(-2).join(' · ') : 'Error: ' + j.error, 8000); await load();
+});
+load();
+</script>
+</body>
+</html>

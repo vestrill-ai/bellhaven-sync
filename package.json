@@ -1,0 +1,12 @@
+{
+  "name": "bellhaven-crm-sync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Keeps Bellhaven Senior Living facility-to-parent links in the CRM accurate: scrape, match, human review, write back.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "pipeline": "node src/pipeline.js",
+    "review": "node src/server.js",
+    "test": "node --test test/run.test.js"
+  }
+}

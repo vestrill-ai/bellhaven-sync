@@ -1,0 +1,41 @@
+# Runs the matching pipeline every day. It only GENERATES proposals; nothing is written to the CRM
+# until a reviewer approves it in the review app.
+#
+# The review queue (data/state.json) is committed back to the repo so decisions persist between runs.
+# That is what makes re-runs safe: approved/rejected proposal keys are never re-queued.
+name: daily-bellhaven-sync
+
+on:
+  schedule:
+    - cron: "15 11 * * *"   # 11:15 UTC = 5:15/6:15 AM Central, queue is ready before the team starts
+  workflow_dispatch: {}
+
+concurrency:
+  group: bellhaven-sync      # never let two runs (or a run and a manual dispatch) race on the queue
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Tests
+        run: npm test
+      - name: Generate proposals
+        env:
+          CRM_TOKEN: ${{ secrets.CRM_TOKEN }}
+        run: npm run pipeline
+      - name: Persist review queue
+        run: |
+          git config user.name "bellhaven-sync-bot"
+          git config user.email "bellhaven-sync-bot@users.noreply.github.com"
+          git add data/state.json
+          git diff --cached --quiet || git commit -m "sync: daily proposals $(date -u +%F)"
+          git push
