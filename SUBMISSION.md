@@ -21,15 +21,21 @@ to call a facility closed or sold.
 
 Every change goes to a review queue first. Each card shows the website record, the CRM record, why they matched, and
 exactly what will change. Nothing is written to the CRM until I approve it. Running the pipeline again doesn't
-re-propose anything I've already approved or rejected. I rejected the Grove City rename because it was only
-"Rehab and" vs "Rehabilitation &", which isn't worth a write.
+re-propose anything I've already approved or rejected.
+
+One decision I changed: in the demo I rejected the Grove City rename because it was only "Rehab and" vs
+"Rehabilitation &", which felt too small to be worth a write. When I got to Ashland and Arbors Dayton, which are the
+same kind of cosmetic change, I realised I was about to be inconsistent. The point of the exercise is for the CRM to
+match the website, so I approved all the cosmetic fixes. The app had no way to undo a rejection, so I added a Reopen
+button for rejected items. It logs who reopened it and when. I reopened Grove City and approved it. Approved items
+can't be reopened because they're already written to the CRM.
 
 **How I used AI.** I used Claude Code as a pair programmer. I had it read the brief and explore the website and the API
 read-only first, and list everything that looked wrong before writing any code. I checked that list against the data
 myself, then had it build the pipeline and tests against a snapshot of the sandbox. When the right call wasn't obvious,
 I made it. For example, it was my decision not to create a second Millstone account for Sandusky, and to flag the
 missing facilities instead of deactivating them. I also had it rework the review screen in plain language after I
-found the first version too technical. Every change in the CRM went through the review app and was approved by me.
+found the first version too technical, and add the Reopen button when I changed my mind on Grove City. Every change in the CRM went through the review app and was approved by me.
 
 **What I'd build next.** Logins on the review app so more than one person can work the queue, with every decision
 tracked by person. Auto-approve for low-risk fixes once we trust them. The same pipeline for other operators. A second

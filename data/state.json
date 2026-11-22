@@ -87,10 +87,29 @@
         }
       ],
       "key": "8d1c438e22092e89",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:53:46.176Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: created account 0015AC20C9D0171C9B \"Amberly Manor\""
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {
+          "new": "0015AC20C9D0171C9B"
+        },
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:53:46.880Z"
     },
     "4196ea5b221022e6": {
       "type": "UPDATE_FIELDS",
@@ -182,10 +201,27 @@
         }
       ],
       "key": "4196ea5b221022e6",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:23.059Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 00191H7JR16471SZ34 {\"name\":\"Bellhaven at Sycamore Ridge\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:23.193Z"
     },
     "8d09464e67bbb166": {
       "type": "CREATE_ACCOUNT",
@@ -383,10 +419,27 @@
         }
       ],
       "key": "3c612e53e768bf1c",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:53:00.959Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "Per SOP.",
+          "log": [
+            "step 1: updated 001LGFPBJY4N9MB6KL {\"parent_id\":\"0015QAPLGS3FVYEEEM\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:53:02.221Z"
     },
     "6a864cfb4fa061a9": {
       "type": "MARK_DUPLICATE",
@@ -526,10 +579,27 @@
         }
       ],
       "key": "6a864cfb4fa061a9",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:28.437Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 00159PL81N38KM4FHM {\"duplicate_of_account\":\"001U1750VLVJAGG1S5\",\"status\":\"Inactive\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:28.588Z"
     },
     "75ada33b4b5fdb27": {
       "type": "MARK_DUPLICATE",
@@ -669,10 +739,27 @@
         }
       ],
       "key": "75ada33b4b5fdb27",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:00.275Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 0011AB44D05WLA9HTX {\"duplicate_of_account\":\"001U1750VLVJAGG1S5\",\"status\":\"Inactive\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:01.464Z"
     },
     "92510b4e80f83662": {
       "type": "UPDATE_FIELDS",
@@ -760,10 +847,27 @@
         }
       ],
       "key": "92510b4e80f83662",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:25.497Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001RJ0D7Z5MAZN5HX5 {\"name\":\"Bellhaven Healthcare Centre of Ashland\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:25.657Z"
     },
     "ecda5db640946f26": {
       "type": "REPARENT",
@@ -854,10 +958,27 @@
         }
       ],
       "key": "ecda5db640946f26",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:54:26.526Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001UKEFGADQ8YCZ4YM {\"parent_id\":\"0015QAPLGS3FVYEEEM\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:54:27.706Z"
     },
     "ac63407ef38cd11d": {
       "type": "UPDATE_FIELDS",
@@ -948,10 +1069,27 @@
         }
       ],
       "key": "ac63407ef38cd11d",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:24.732Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001NXP9X46CWEPSLSV {\"billing_street\":\"3156 W Prospect Rd\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:24.880Z"
     },
     "8b4e96634956e4e3": {
       "type": "CREATE_ACCOUNT",
@@ -1007,10 +1145,29 @@
         }
       ],
       "key": "8b4e96634956e4e3",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:53:51.636Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: created account 00108325A9F0948EB5 \"Bellhaven of Batavia\""
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {
+          "new": "00108325A9F0948EB5"
+        },
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:53:52.199Z"
     },
     "644e723230210f1d": {
       "type": "CREATE_ACCOUNT",
@@ -1066,10 +1223,29 @@
         }
       ],
       "key": "644e723230210f1d",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:53:53.810Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: created account 0013377AEAB959E21E \"Bellhaven of Carlisle\""
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {
+          "new": "0013377AEAB959E21E"
+        },
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:53:53.900Z"
     },
     "2a6470f194911587": {
       "type": "UPDATE_FIELDS",
@@ -1156,10 +1332,27 @@
         }
       ],
       "key": "2a6470f194911587",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:26.787Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001RJU1X4NBWC1Q0G7 {\"name\":\"Bellhaven of Chagrin Falls\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:26.931Z"
     },
     "a139d7012faac994": {
       "type": "UPDATE_FIELDS",
@@ -1251,10 +1444,27 @@
         }
       ],
       "key": "a139d7012faac994",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:21.957Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 0013NUZQHQUEZ8DXEG {\"name\":\"Bellhaven of Chesterton\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:22.086Z"
     },
     "5a10840ef1aa36f7": {
       "type": "MARK_DUPLICATE",
@@ -1362,10 +1572,27 @@
         }
       ],
       "key": "5a10840ef1aa36f7",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:29.434Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 0016KTS1UAWBRXS09J {\"duplicate_of_account\":\"001WR41PYNWXCAE2X4\",\"status\":\"Inactive\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:29.583Z"
     },
     "b78fc13a20818edf": {
       "type": "MARK_DUPLICATE",
@@ -1629,10 +1856,27 @@
         }
       ],
       "key": "19f2c2e62dcc2fae",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:54:20.594Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "Per Billing SOP",
+          "log": [
+            "step 1: updated 001WR41PYNWXCAE2X4 {\"parent_id\":\"0015QAPLGS3FVYEEEM\",\"name\":\"Bellhaven of Kettering\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:54:21.761Z"
     },
     "49f4bd0e54e56185": {
       "type": "CHOW_NEW_ACCOUNT",
@@ -2015,10 +2259,27 @@
         }
       ],
       "key": "2d8b0e41b66861eb",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:13.274Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001JD2MWRA74LTSN24 {\"duplicate_of_account\":\"001UELXDAKFRKB8932\",\"status\":\"Inactive\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:14.516Z"
     },
     "79064b4af8ba629d": {
       "type": "UPDATE_FIELDS",
@@ -2104,10 +2365,27 @@
         }
       ],
       "key": "79064b4af8ba629d",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:23.923Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001CF3LDWVRGL09P4F {\"billing_zip\":\"45662\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:24.064Z"
     },
     "e3bf8245f24a510d": {
       "type": "CHOW_NEW_ACCOUNT",
@@ -2319,10 +2597,27 @@
         }
       ],
       "key": "910580e1fba04364",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:54:41.780Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001H1JMVZWP46D5VUF {\"parent_id\":\"0015QAPLGS3FVYEEEM\",\"name\":\"Bellhaven of Zanesville\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:54:42.972Z"
     },
     "324c4b0576d045bf": {
       "type": "UPDATE_FIELDS",
@@ -2409,17 +2704,39 @@
         }
       ],
       "key": "324c4b0576d045bf",
-      "status": "rejected",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:01:42.062Z",
+      "last_seen": "2026-11-22T23:50:20.229Z",
       "history": [
         {
           "at": "2026-11-22T23:23:34.873Z",
           "event": "rejected",
           "by": "reviewer",
           "comment": ""
+        },
+        {
+          "at": "2026-11-22T23:49:56.756Z",
+          "event": "reopened",
+          "by": "reviewer",
+          "comment": ""
+        },
+        {
+          "at": "2026-11-22T23:52:01.966Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "Consistency among cosmetic changes.",
+          "log": [
+            "step 1: updated 001TZCSTBZFM6K5BGN {\"name\":\"Bellhaven Rehabilitation & Nursing of Grove City\"}"
+          ]
         }
-      ]
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:52:03.166Z"
     },
     "ba10e2170099f361": {
       "type": "MARK_DUPLICATE",
@@ -2536,10 +2853,27 @@
         }
       ],
       "key": "ba10e2170099f361",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:30.125Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 001BLYF02K97SZLZHH {\"duplicate_of_account\":\"001CVBBCSDM7YHN220\",\"status\":\"Inactive\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:30.269Z"
     },
     "6c86d8509980aeb1": {
       "type": "UPDATE_FIELDS",
@@ -2619,10 +2953,27 @@
         }
       ],
       "key": "6c86d8509980aeb1",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:19.671Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 0017MN2JYAJBDS8WQZ {\"name\":\"Bellhaven Willow Creek\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:20.872Z"
     },
     "bc50466c018e1c23": {
       "type": "UPDATE_FIELDS",
@@ -2715,10 +3066,27 @@
         }
       ],
       "key": "bc50466c018e1c23",
-      "status": "pending",
+      "status": "approved",
       "first_seen": "2026-11-22T22:51:15.285Z",
-      "last_seen": "2026-11-22T23:33:43.354Z",
-      "history": []
+      "last_seen": "2026-11-22T23:50:20.229Z",
+      "history": [
+        {
+          "at": "2026-11-22T23:55:27.642Z",
+          "event": "approved+applied",
+          "by": "reviewer",
+          "comment": "",
+          "log": [
+            "step 1: updated 0010KJFP601YNTZVDA {\"name\":\"The Arbors at Bellhaven - Dayton\"}"
+          ]
+        }
+      ],
+      "progress": {
+        "refs": {},
+        "done": [
+          0
+        ]
+      },
+      "applied_at": "2026-11-22T23:55:27.774Z"
     },
     "7403e90c5cbbe81f": {
       "type": "NOT_ON_WEBSITE",
@@ -3036,18 +3404,64 @@
         "skipped_decided": 1,
         "obsoleted": 0
       }
+    },
+    {
+      "at": "2026-11-22T23:50:20.229Z",
+      "locations": 35,
+      "accounts": 124,
+      "outcomes": {
+        "NEW": 3,
+        "UPDATE": 9,
+        "CONFIRMED": 19,
+        "REPARENT": 4
+      },
+      "queue": {
+        "new": 0,
+        "refreshed": 21,
+        "skipped_decided": 0,
+        "obsoleted": 0
+      }
+    },
+    {
+      "at": "2026-11-22T23:55:33.311Z",
+      "locations": 35,
+      "accounts": 127,
+      "outcomes": {
+        "CONFIRMED": 35
+      },
+      "queue": {
+        "new": 0,
+        "refreshed": 0,
+        "skipped_decided": 0,
+        "obsoleted": 0
+      }
+    },
+    {
+      "at": "2026-11-22T23:56:50.765Z",
+      "locations": 35,
+      "accounts": 127,
+      "outcomes": {
+        "CONFIRMED": 35
+      },
+      "queue": {
+        "new": 0,
+        "refreshed": 0,
+        "skipped_decided": 0,
+        "obsoleted": 0
+      }
     }
   ],
   "last_matched": [
     {
       "slug": "amberly-manor",
       "name": "Amberly Manor",
-      "outcome": "NEW"
+      "outcome": "CONFIRMED",
+      "account_id": "0015AC20C9D0171C9B"
     },
     {
       "slug": "bellhaven-at-sycamore-ridge",
       "name": "Bellhaven at Sycamore Ridge",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "00191H7JR16471SZ34"
     },
     {
@@ -3065,7 +3479,7 @@
     {
       "slug": "bellhaven-crossings-of-lima",
       "name": "Bellhaven Crossings of Lima",
-      "outcome": "REPARENT",
+      "outcome": "CONFIRMED",
       "account_id": "001LGFPBJY4N9MB6KL"
     },
     {
@@ -3077,41 +3491,43 @@
     {
       "slug": "bellhaven-healthcare-centre-of-ashland",
       "name": "Bellhaven Healthcare Centre of Ashland",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "001RJ0D7Z5MAZN5HX5"
     },
     {
       "slug": "bellhaven-meadows-of-findlay",
       "name": "Bellhaven Meadows of Findlay",
-      "outcome": "REPARENT",
+      "outcome": "CONFIRMED",
       "account_id": "001UKEFGADQ8YCZ4YM"
     },
     {
       "slug": "bellhaven-of-ashtabula",
       "name": "Bellhaven of Ashtabula",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "001NXP9X46CWEPSLSV"
     },
     {
       "slug": "bellhaven-of-batavia",
       "name": "Bellhaven of Batavia",
-      "outcome": "NEW"
+      "outcome": "CONFIRMED",
+      "account_id": "00108325A9F0948EB5"
     },
     {
       "slug": "bellhaven-of-carlisle",
       "name": "Bellhaven of Carlisle",
-      "outcome": "NEW"
+      "outcome": "CONFIRMED",
+      "account_id": "0013377AEAB959E21E"
     },
     {
       "slug": "bellhaven-of-chagrin-falls",
       "name": "Bellhaven of Chagrin Falls",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "001RJU1X4NBWC1Q0G7"
     },
     {
       "slug": "bellhaven-of-chesterton",
       "name": "Bellhaven of Chesterton",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "0013NUZQHQUEZ8DXEG"
     },
     {
@@ -3135,7 +3551,7 @@
     {
       "slug": "bellhaven-of-kettering",
       "name": "Bellhaven of Kettering",
-      "outcome": "REPARENT",
+      "outcome": "CONFIRMED",
       "account_id": "001WR41PYNWXCAE2X4"
     },
     {
@@ -3147,8 +3563,8 @@
     {
       "slug": "bellhaven-of-marietta",
       "name": "Bellhaven of Marietta",
-      "outcome": "CHOW",
-      "account_id": "001A34WFSUYHCRBLFT"
+      "outcome": "CONFIRMED",
+      "account_id": "0017023BE58158151E"
     },
     {
       "slug": "bellhaven-of-marion",
@@ -3183,7 +3599,7 @@
     {
       "slug": "bellhaven-of-portsmouth",
       "name": "Bellhaven of Portsmouth",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "001CF3LDWVRGL09P4F"
     },
     {
@@ -3207,13 +3623,13 @@
     {
       "slug": "bellhaven-of-zanesville",
       "name": "Bellhaven of Zanesville",
-      "outcome": "REPARENT",
+      "outcome": "CONFIRMED",
       "account_id": "001H1JMVZWP46D5VUF"
     },
     {
       "slug": "bellhaven-rehabilitation-nursing-of-grove-city",
       "name": "Bellhaven Rehabilitation & Nursing of Grove City",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "001TZCSTBZFM6K5BGN"
     },
     {
@@ -3231,7 +3647,7 @@
     {
       "slug": "bellhaven-willow-creek",
       "name": "Bellhaven Willow Creek",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "0017MN2JYAJBDS8WQZ"
     },
     {
@@ -3243,7 +3659,7 @@
     {
       "slug": "the-arbors-at-bellhaven-dayton",
       "name": "The Arbors at Bellhaven - Dayton",
-      "outcome": "UPDATE",
+      "outcome": "CONFIRMED",
       "account_id": "0010KJFP601YNTZVDA"
     }
   ],
@@ -3251,28 +3667,36 @@
     "001UXEM0PCSUVRAYPF": "Amberly Care Center",
     "001DPANQQTRR1LXFY4": "Amberly Estates",
     "00192CFL38Y0U4Q887": "Amberly Gardens",
+    "0015AC20C9D0171C9B": "Amberly Manor",
     "0015D74ZLRY810RGY5": "Amberly Manor",
-    "0010KJFP601YNTZVDA": "Arbors at Bellhaven Dayton",
     "001YQH5RQ9VL8C42GU": "Aspen Court Assisted Living",
     "001BR49KRHQDR5HCVS": "Aspen Court Nursing & Rehabilitation",
     "00116ETS45BL7DTQP7": "Bellhaven Care Center of Alliance",
     "0011D2P3CWSHMF81C8": "Bellhaven Court of Altoona",
     "001LGFPBJY4N9MB6KL": "Bellhaven Crossings of Lima",
     "001U1750VLVJAGG1S5": "Bellhaven Gardens of Monroe",
-    "001RJ0D7Z5MAZN5HX5": "Bellhaven Health Care Center of Ashland",
+    "001RJ0D7Z5MAZN5HX5": "Bellhaven Healthcare Centre of Ashland",
     "001UKEFGADQ8YCZ4YM": "Bellhaven Meadows of Findlay",
-    "001TZCSTBZFM6K5BGN": "Bellhaven Rehab and Nursing of Grove City",
+    "001TZCSTBZFM6K5BGN": "Bellhaven Rehabilitation & Nursing of Grove City",
     "0015QAPLGS3FVYEEEM": "Bellhaven Senior Living (Parent Account)",
     "001CVBBCSDM7YHN220": "Bellhaven Shores of Erie",
     "0019Y4J61ZBG4R00CD": "Bellhaven Terrace of Akron",
+    "0017MN2JYAJBDS8WQZ": "Bellhaven Willow Creek",
     "0014DHACE6WQU3RMM5": "Bellhaven Woods of Toledo",
+    "00191H7JR16471SZ34": "Bellhaven at Sycamore Ridge",
     "00185E31888366C1A5": "Bellhaven at Union Square",
     "001NXP9X46CWEPSLSV": "Bellhaven of Ashtabula",
+    "00108325A9F0948EB5": "Bellhaven of Batavia",
+    "0013377AEAB959E21E": "Bellhaven of Carlisle",
+    "001RJU1X4NBWC1Q0G7": "Bellhaven of Chagrin Falls",
+    "0013NUZQHQUEZ8DXEG": "Bellhaven of Chesterton",
     "0016PVXH4B25HWR7QE": "Bellhaven of Coldwater",
     "001R4PXTUD9R6FNN8V": "Bellhaven of Defiance",
     "001JQER1RMYKNRLNME": "Bellhaven of Goshen",
     "001NSHWKQD0YJLPQ20": "Bellhaven of Kalamazoo",
+    "001WR41PYNWXCAE2X4": "Bellhaven of Kettering",
     "001L3LGR6W69J8DYYV": "Bellhaven of Maplewood",
+    "0017023BE58158151E": "Bellhaven of Marietta",
     "001A34WFSUYHCRBLFT": "Bellhaven of Marietta",
     "0015L38R1Z5947ZZP7": "Bellhaven of Marion",
     "001KC1NG7EZDEKKA3T": "Bellhaven of Meadville",
@@ -3283,10 +3707,10 @@
     "001CF3LDWVRGL09P4F": "Bellhaven of Portsmouth",
     "001MVVAPY6U5TVYRC4": "Bellhaven of Saline",
     "001SXSF4ELF0Z2LGDM": "Bellhaven of Sandusky",
-    "00191H7JR16471SZ34": "Bellhaven of Sycamore Ridge",
     "0010521277964B8A18": "Bellhaven of Tiffin",
     "001U6RW32TY0WSXZZB": "Bellhaven of Tiffin",
     "001W5G121A7SMRP58M": "Bellhaven of Wooster",
+    "001H1JMVZWP46D5VUF": "Bellhaven of Zanesville",
     "001GSSHJACJUH7SAZW": "Bristol Manor Assisted Living",
     "001UUR3JX8J02F4H60": "Bristol Manor Care Center",
     "001WC2VPMSRMLGKEFS": "Bristol Manor Gardens",
@@ -3295,8 +3719,6 @@
     "001YTHGSDPVYZKCEMU": "Brookfield Manor",
     "001FWSQ30SFW6S7604": "Cedar Trail Communities (Parent Account)",
     "0011AB44D05WLA9HTX": "Cedar Trail of Monroe",
-    "001H1JMVZWP46D5VUF": "Cedar Trail of Zanesville",
-    "0013NUZQHQUEZ8DXEG": "Chesterton Senior Commons",
     "0017M8U4SRVSZUNLJQ": "Chestnut Grove Estates",
     "0016LW0Q6XE146JN6B": "Chestnut Grove Manor",
     "0016QD1DKVTB3RS2HZ": "Chestnut Grove Rehabilitation Center",
@@ -3329,7 +3751,6 @@
     "001HSFH7Z9T3HHTXHU": "Juniper Place",
     "001DAAUWV2J3SHQJ34": "Juniper Point Healthcare (Parent Account)",
     "0016N93HJ285TTBB4B": "Juniper Village",
-    "001WR41PYNWXCAE2X4": "Kettering Care Centre",
     "0016KTS1UAWBRXS09J": "Kettering Nursing & Rehabilitation",
     "001B7XZAA3AFALS9GP": "Kettering Senior Campus",
     "0015ZXZETFJ956SSXU": "Lakeside Commons",
@@ -3345,7 +3766,6 @@
     "00199LM13DSYJ6EBNG": "Northfield Rehabilitation Center",
     "001CBDQSNJUVEG0HDH": "Oakmont Rehabilitation Center",
     "001D7LLN6KBKRF7NYE": "Prairie View Estates",
-    "001RJU1X4NBWC1Q0G7": "Riverbend Manor Care Center",
     "0018L6DVPRS7Y0QPRM": "Rosewood Care Center",
     "001LBTBSAQ54KNX4WG": "Rosewood Gardens",
     "0017B6CMNGFQ8MB8YS": "Rosewood Manor",
@@ -3357,7 +3777,7 @@
     "001PFE1QRNNGC5XS9U": "Sterling Oaks Gardens",
     "00139TNDS8HNLUZ5A6": "Stonebridge Eldercare (Parent Account)",
     "001PH31GJV5JATTYR4": "Stonebridge Senior Living",
-    "0017MN2JYAJBDS8WQZ": "Sunny Acres Retirement Home",
+    "0010KJFP601YNTZVDA": "The Arbors at Bellhaven - Dayton",
     "0016UJWS19L5NT0FVX": "Timber Ridge Health Campus",
     "001TNJACR5MSJBBCJ6": "Timber Ridge Nursing & Rehabilitation",
     "001UTL2M7C6E7SD74K": "Timber Ridge Village",
