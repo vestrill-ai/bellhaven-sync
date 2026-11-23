@@ -4,3 +4,4 @@ data/snapshots/
 *.tmp
 logs/
 .claude/
+PREP.md
