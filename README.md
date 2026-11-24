@@ -4,7 +4,7 @@ Keeps the facility → parent-company links in the CRM in line with what Bellhav
 A daily job scrapes the website, matches each community to a CRM account, and puts every proposed change in a **review queue**.
 A person approves or rejects each item in a small local web app; **only approved items are written to the CRM.**
 
-Zero dependencies: Node 18+ only.
+Zero dependencies: Node 18+ (CI and development use Node 24).
 
 ```bash
 cp .env.example .env          # add CRM_TOKEN (for the GitHub workflow, see "Scheduling" below)
