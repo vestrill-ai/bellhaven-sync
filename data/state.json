@@ -3477,6 +3477,20 @@
         "skipped_decided": 0,
         "obsoleted": 0
       }
+    },
+    {
+      "at": "2026-11-24T00:17:21.704Z",
+      "locations": 35,
+      "accounts": 127,
+      "outcomes": {
+        "CONFIRMED": 35
+      },
+      "queue": {
+        "new": 0,
+        "refreshed": 0,
+        "skipped_decided": 0,
+        "obsoleted": 0
+      }
     }
   ],
   "last_matched": [
