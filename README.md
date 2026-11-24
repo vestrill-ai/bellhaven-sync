@@ -7,7 +7,7 @@ A person approves or rejects each item in a small local web app; **only approved
 Zero dependencies: Node 18+ only.
 
 ```bash
-cp .env.example .env          # add CRM_TOKEN
+cp .env.example .env          # add CRM_TOKEN (for the GitHub workflow, see "Scheduling" below)
 npm test                      # 12 tests against a real snapshot of the CRM + website
 npm run pipeline              # scrape + match -> data/state.json (never writes to the CRM)
 npm run review                # http://localhost:3000  -> approve / reject
@@ -98,6 +98,15 @@ the CRM straight away; reject records who and why. Account ids link to the CRM b
 `.github/workflows/daily-sync.yml` runs tests and then the pipeline at 11:15 UTC each day, and commits `data/state.json`
 back so decisions persist between runs. `schedule/crontab.txt` is the same thing for a plain server (`flock` stops runs
 from overlapping). Neither needs to be live for this exercise.
+
+**Setting up the GitHub workflow:** the job reads the CRM token from a repository secret, not from `.env` (which is
+git-ignored and never reaches the runner). Before the first scheduled run:
+
+1. Repo **Settings → Secrets and variables → Actions → New repository secret**: name `CRM_TOKEN`, value as in your `.env`.
+2. Make sure **Settings → Actions → General → Workflow permissions** allows read and write, so the job can push `data/state.json`.
+3. Test it with **Actions → daily-bellhaven-sync → Run workflow** instead of waiting for 11:15 UTC.
+
+If the secret is missing, **Generate proposals** fails with `CRM_TOKEN is not set` and the queue isn't updated.
 
 ## What I found in the sandbox (2026-11-22)
 35 communities on the website → **16 confirmed, 9 field updates, 4 re-parents, 2 CHOWs, 4 new accounts**, plus
